@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz/core/resources/color_mananger.dart';
+import 'package:quiz/core/resources/font_mananger.dart';
 import 'package:quiz/core/resources/strings_value.dart';
 
 class SplachView extends StatelessWidget {
@@ -7,12 +8,31 @@ class SplachView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: ColorMananger.kPrimaryColor,
       body: Center(
-        child: Text(
-          StringsValue.kStringLogo,
-          style: TextStyle(color: ColorMananger.kWhite, fontSize: 400),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            const Text(
+              StringsValue.kStringLogo,
+              style: TextStyle(
+                  color: ColorMananger.kWhite, fontSize: FontSize.k400),
+            ),
+            ElevatedButton(
+              onPressed: () {},
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 40),
+                child: const Text(
+                  'Get Started',
+                  style: TextStyle(
+                    fontSize: FontSize.k21,
+                    color: ColorMananger.kSecondColor,
+                  ),
+                ),
+              ),
+            )
+          ],
         ),
       ),
     );
