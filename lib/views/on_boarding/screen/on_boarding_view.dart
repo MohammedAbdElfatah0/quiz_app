@@ -29,7 +29,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
 
   @override
   Widget build(BuildContext context) {
-    PageController pageController = PageController();
+   
     return Scaffold(
       bottomNavigationBar: CustemBottonBarOnboardingscreen(
         onTapSkip: () {
