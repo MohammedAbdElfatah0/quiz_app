@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:quiz/core/resources/color_mananger.dart';
-import 'package:quiz/core/resources/font_mananger.dart';
+import 'package:quiz/controller/splach/splach_controller.dart';
+import 'package:quiz/core/resources/color_manager.dart';
+import 'package:quiz/core/resources/font_manager.dart';
 import 'package:quiz/core/resources/strings_value.dart';
+import '../widget/custem_button_splach_screen.dart';
 
 class SplachView extends StatelessWidget {
   const SplachView({super.key});
@@ -9,7 +11,7 @@ class SplachView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorMananger.kPrimaryColor,
+      backgroundColor: ColorManager.kPrimaryColor,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -17,20 +19,12 @@ class SplachView extends StatelessWidget {
             const Text(
               StringsValue.kStringLogo,
               style: TextStyle(
-                  color: ColorMananger.kWhite, fontSize: FontSize.k400),
+                  color: ColorManager.kWhiteColor, fontSize: FontSize.k400),
             ),
-            ElevatedButton(
-              onPressed: () {},
-              child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 40),
-                child: const Text(
-                  'Get Started',
-                  style: TextStyle(
-                    fontSize: FontSize.k21,
-                    color: ColorMananger.kSecondColor,
-                  ),
-                ),
-              ),
+            CustemButtonSplachScreen(
+              onPressed: () {
+                SplachController.goToOnBoardingView(context);
+              },
             )
           ],
         ),

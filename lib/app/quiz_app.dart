@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quiz/core/resources/font_mananger.dart';
-import 'package:quiz/views/splach/screen/splach_view.dart';
+import 'package:quiz/core/resources/font_manager.dart';
+import '../core/resources/routes_manager.dart';
 
 class QuizApp extends StatelessWidget {
   const QuizApp({super.key});
@@ -8,9 +8,10 @@ class QuizApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(fontFamily: FontMananger.kFontMananger),
+      routes:RoutesManager.routes ,
+      theme: ThemeData(fontFamily: FontManager.kFontMananger),
       debugShowCheckedModeBanner: false,
-      home: const SplachView(),
+   initialRoute: RoutesName.kSplachScreen,
     );
   }
 }
