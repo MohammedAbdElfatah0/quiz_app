@@ -11,4 +11,7 @@ class StringsValue {
   static const String kCoolQuiz = 'Cool Quiz';
   static const String kCoolQuizSubTitile =
       'Culpa qui officia deserunt mollit anim id est laborum.';
+
+      
+  static const String kTitleLoginScreen = 'Enter Your Name';
 }

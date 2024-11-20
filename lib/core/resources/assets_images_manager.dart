@@ -5,4 +5,6 @@ class AssetsImagesManager {
       'assets/images/onboarding/onBoardingImage1.png';
   static const String onBoardingImage2 =
       'assets/images/onboarding/onBoardingImage2.png';
+  static const String kLoginScreen =
+      'assets/images/onboarding/Login Screen.png';
 }
