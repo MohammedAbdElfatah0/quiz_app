@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:quiz/core/resources/color_manager.dart';
-import 'package:quiz/core/resources/font_manager.dart';
-
+import 'package:quiz/core/resources/height_managers.dart';
 import '../widget/custem_app_bar_quiz_screen.dart';
+import '../widget/custem_circular_percent_indicator_quizz_screen.dart';
+import '../widget/custem_question_quizz_screen.dart';
 
 class QuizScreen extends StatelessWidget {
   const QuizScreen({super.key});
@@ -20,21 +20,37 @@ class QuizScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              const SizedBox(
+                height: HeightManagers.h88,
+              ),
               Stack(
+                clipBehavior: Clip.none,
                 children: [
-                  CircularPercentIndicator(
-                    radius: 45,
-                    percent: 1,
-                    progressColor: ColorManager.kPrimaryColor,
-                    animation: true,
-                    animationDuration: 30000,
-                    backgroundColor:
-                        ColorManager.kPrimaryColor.withOpacity(0.38),
-                    center: const Text(
-                      '30',
-                      style: TextStyle(
-                          fontSize: FontSize.k32, fontWeight: FontWeight.w600),
+                  Container(
+                    width: double.infinity,
+                    height: HeightManagers.h229,
+                    decoration: BoxDecoration(
+                        boxShadow: const [
+                          BoxShadow(
+                              blurRadius: 120,
+                              blurStyle: BlurStyle.outer,
+                              spreadRadius: -50,
+                              offset: Offset(0, 15))
+                        ],
+                        color: ColorManager.kWhiteColor,
+                        borderRadius: BorderRadius.circular(20)),
+                  ),
+                  const Positioned(
+                    top: -30,
+                    right: 0,
+                    left: 0,
+                    child: CustemCircularPercentIndicatorQuizzScreen(
+                      text: '40',
                     ),
+                  ),
+                  const CustemQuestionQuizzScreen(
+                    titleQuestion:
+                        'In what year did the United States host the FIFA World Cup for the first time?',
                   )
                 ],
               )
