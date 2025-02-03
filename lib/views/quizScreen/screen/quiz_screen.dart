@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+
 import 'package:quiz/core/resources/color_manager.dart';
 import 'package:quiz/core/resources/height_managers.dart';
+
 import '../widget/custem_app_bar_quiz_screen.dart';
 import '../widget/custem_circular_percent_indicator_quizz_screen.dart';
+import '../widget/custem_item_radio_quiz_screen.dart';
 import '../widget/custem_question_quizz_screen.dart';
 
 class QuizScreen extends StatelessWidget {
@@ -53,7 +56,14 @@ class QuizScreen extends StatelessWidget {
                         'In what year did the United States host the FIFA World Cup for the first time?',
                   )
                 ],
-              )
+              ),
+              const SizedBox(
+                height: HeightManagers.h70,
+              ),
+              const CustemItemRadioQuiaScreen(),
+              const CustemItemRadioQuiaScreen(),
+              const CustemItemRadioQuiaScreen(),
+              const CustemItemRadioQuiaScreen(),
             ],
           ),
         ),
