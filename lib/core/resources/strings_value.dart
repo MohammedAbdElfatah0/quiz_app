@@ -12,6 +12,6 @@ class StringsValue {
   static const String kCoolQuizSubTitile =
       'Culpa qui officia deserunt mollit anim id est laborum.';
 
-      
   static const String kTitleLoginScreen = 'Enter Your Name';
+  static const String kPrevious = 'previous';
 }

@@ -3,6 +3,7 @@ class FontManager {
 }
 
 class FontSize {
+  static const double k12 = 12;
   static const double k15 = 15;
   static const double k18 = 18;
   static const double k21 = 21;

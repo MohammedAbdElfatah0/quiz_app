@@ -9,10 +9,11 @@ import '../../../core/resources/font_manager.dart';
 class CustemButtonLoginScreen extends StatelessWidget {
   const CustemButtonLoginScreen({
     Key? key,
-    this.onPressed, required this.isActiveOutputStream,
+    this.onPressed,
+    required this.isActiveOutputStream,
   }) : super(key: key);
   final VoidCallback? onPressed;
-   final Stream<bool> isActiveOutputStream;
+  final Stream<bool> isActiveOutputStream;
   // final bool isActive;
   @override
   Widget build(BuildContext context) {
@@ -22,15 +23,17 @@ class CustemButtonLoginScreen extends StatelessWidget {
         return ElevatedButton(
           style: ButtonStyle(
               padding: const WidgetStatePropertyAll(
-                  EdgeInsets.symmetric(horizontal: 100, vertical: 5)),
+                  EdgeInsets.symmetric(horizontal: 90, vertical: 5)),
               backgroundColor: WidgetStatePropertyAll(snapshot.data == null
-                  ?  ColorManager.kGreyColor
+                  ? ColorManager.kGreyColor
                   : snapshot.data == true
                       ? ColorManager.kPrimaryColor
                       : ColorManager.kGreyColor)),
           onPressed: snapshot.data == null
-                  ? null
-                  : snapshot.data == true ? onPressed : null,
+              ? null
+              : snapshot.data == true
+                  ? onPressed
+                  : null,
           child: const Padding(
             padding: EdgeInsets.symmetric(vertical: 10, horizontal: 40),
             child: Text(
