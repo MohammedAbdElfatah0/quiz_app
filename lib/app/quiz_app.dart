@@ -8,10 +8,10 @@ class QuizApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      routes:RoutesManager.routes ,
+      routes: RoutesManager.routes,
       theme: ThemeData(fontFamily: FontManager.kFontMananger),
       debugShowCheckedModeBanner: false,
-   initialRoute: RoutesName.kSplachScreen,
+      initialRoute: RoutesName.kQuizScreen,
     );
   }
 }

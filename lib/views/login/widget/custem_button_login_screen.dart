@@ -8,10 +8,10 @@ import '../../../core/resources/font_manager.dart';
 
 class CustemButtonLoginScreen extends StatelessWidget {
   const CustemButtonLoginScreen({
-    Key? key,
+    super.key,
     this.onPressed,
     required this.isActiveOutputStream,
-  }) : super(key: key);
+  });
   final VoidCallback? onPressed;
   final Stream<bool> isActiveOutputStream;
   // final bool isActive;
