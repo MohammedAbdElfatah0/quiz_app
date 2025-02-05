@@ -6,7 +6,7 @@ import 'package:quiz/core/resources/height_managers.dart';
 
 import '../widget/custem_app_bar_quiz_screen.dart';
 import '../widget/custem_circular_percent_indicator_quizz_screen.dart';
-import '../widget/custem_item_radio_quiz_screen.dart';
+import '../widget/custem_list_view_separated_quiz.dart';
 import '../widget/custem_question_quizz_screen.dart';
 
 class QuizScreen extends StatefulWidget {
@@ -75,16 +75,8 @@ class _QuizScreenState extends State<QuizScreen> {
                 const SizedBox(
                   height: HeightManagers.h70,
                 ),
-                ListView.separated(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemBuilder: (context, index) => CustemItemRadioQuiaScreen(
-                          text: 'title $index',
-                        ),
-                    separatorBuilder: (context, index) => const SizedBox(
-                          height: 25,
-                        ),
-                    itemCount: _qiuzScreenController.option.length)
+                CustemListViewSeparatedQuiz(
+                    qiuzScreenController: _qiuzScreenController)
               ],
             ),
           ),
