@@ -3,7 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../core/resources/color_manager.dart';
 import '../../../core/resources/font_manager.dart';
-import 'custem_radio_quiz_screen.dart';
 
 class CustemItemRadioQuiaScreen extends StatelessWidget {
   const CustemItemRadioQuiaScreen({
@@ -24,7 +23,13 @@ class CustemItemRadioQuiaScreen extends StatelessWidget {
           style: GoogleFonts.baloo2(
               fontSize: FontSize.k18, fontWeight: FontWeight.w600),
         ),
-        const CustemRedioQuizScreen()
+         Container(
+      width: 20,
+      height: 20,
+      decoration: const ShapeDecoration(
+          shape: CircleBorder(
+              side: BorderSide(color: ColorManager.kPrimaryColor, width: 1))),
+    )
       ]),
     );
   }
