@@ -1,19 +1,18 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-
-import 'package:quiz/core/resources/strings_value.dart';
-
 import '../../../core/resources/color_manager.dart';
 import '../../../core/resources/font_manager.dart';
 
 class CustemButtonLoginScreen extends StatelessWidget {
   const CustemButtonLoginScreen({
-    super.key,
+    Key? key,
     this.onPressed,
     required this.isActiveOutputStream,
-  });
+    required this.title,
+  }) : super(key: key);
   final VoidCallback? onPressed;
   final Stream<bool> isActiveOutputStream;
+  final String title;
   // final bool isActive;
   @override
   Widget build(BuildContext context) {
@@ -23,7 +22,7 @@ class CustemButtonLoginScreen extends StatelessWidget {
         return ElevatedButton(
           style: ButtonStyle(
               padding: const WidgetStatePropertyAll(
-                  EdgeInsets.symmetric(horizontal: 90, vertical: 5)),
+                  EdgeInsets.symmetric(vertical: 5)),
               backgroundColor: WidgetStatePropertyAll(snapshot.data == null
                   ? ColorManager.kGreyColor
                   : snapshot.data == true
@@ -34,11 +33,11 @@ class CustemButtonLoginScreen extends StatelessWidget {
               : snapshot.data == true
                   ? onPressed
                   : null,
-          child: const Padding(
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 40),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 5),
             child: Text(
-              StringsValue.kGetStarted,
-              style: TextStyle(
+              title,
+              style: const TextStyle(
                 fontSize: FontSize.k21,
                 color: ColorManager.kWhiteColor,
               ),

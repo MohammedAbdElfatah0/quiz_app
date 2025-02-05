@@ -23,7 +23,9 @@ class CustemItemRadioQuiaScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
         width: double.infinity,
         decoration: BoxDecoration(
-            color: ColorManager.kWhiteColor,
+            color: isSelected
+                ? ColorManager.kPrimaryColor.withOpacity(0.25)
+                : ColorManager.kWhiteColor,
             borderRadius: BorderRadius.circular(20)),
         child:
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [

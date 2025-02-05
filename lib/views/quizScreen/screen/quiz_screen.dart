@@ -3,6 +3,8 @@ import 'package:quiz/controller/quiz/qiuz_screen_controller.dart';
 
 import 'package:quiz/core/resources/color_manager.dart';
 import 'package:quiz/core/resources/height_managers.dart';
+import 'package:quiz/core/resources/strings_value.dart';
+import 'package:quiz/views/login/widget/custem_button_login_screen.dart';
 
 import '../widget/custem_app_bar_quiz_screen.dart';
 import '../widget/custem_circular_percent_indicator_quizz_screen.dart';
@@ -92,6 +94,13 @@ class _QuizScreenState extends State<QuizScreen> {
       appBar: CustemAppBarQuizzScreen(
         onTap: () => Navigator.canPop(context),
         text: '7/10',
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 15),
+        child: CustemButtonLoginScreen(
+            title: StringsValue.kNext,
+            onPressed: () {},
+            isActiveOutputStream: _qiuzScreenController.isActiveOutputStream),
       ),
     );
   }

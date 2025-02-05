@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quiz/controller/Logun/login_controller.dart';
 import 'package:quiz/core/resources/assets_images_manager.dart';
+import 'package:quiz/core/resources/strings_value.dart';
 import '../../../core/resources/height_managers.dart';
 import '../widget/custem_button_login_screen.dart';
 import '../widget/custem_text_enter_your_name.dart';
@@ -18,14 +19,12 @@ class _LoginScreenState extends State<LoginScreen> {
   late LoginController _loginScreenController;
   @override
   void initState() {
-    
     _loginScreenController = LoginController();
     super.initState();
   }
 
   @override
   void dispose() {
-    
     _loginScreenController.onDispose();
     super.dispose();
   }
@@ -49,7 +48,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 const CustemTextEnterYourName(),
                 const SizedBox(height: HeightManagers.h10),
                 CustemTextFieldLoginScreen(
-                  controllerName: _loginScreenController.controllerNameTextField,
+                  controllerName:
+                      _loginScreenController.controllerNameTextField,
                   validation: (value) {
                     return _loginScreenController.validationName(value);
                   },
@@ -62,6 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ],
             ),
             CustemButtonLoginScreen(
+              title: StringsValue.kGetStarted,
               isActiveOutputStream: _loginScreenController.isActiveOutputStream,
               onPressed: () {
                 _loginScreenController.navigatotToQuizApp(context);
