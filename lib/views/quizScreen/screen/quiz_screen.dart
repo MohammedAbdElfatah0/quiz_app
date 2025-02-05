@@ -21,8 +21,14 @@ class _QuizScreenState extends State<QuizScreen> {
 
   @override
   void initState() {
-    _qiuzScreenController = QiuzScreenController();
     super.initState();
+    _qiuzScreenController = QiuzScreenController();
+  }
+
+  @override
+  void dispose() {
+    _qiuzScreenController.onDispose();
+    super.dispose();
   }
 
   @override

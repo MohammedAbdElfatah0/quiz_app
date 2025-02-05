@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../../controller/quiz/qiuz_screen_controller.dart';
@@ -17,9 +16,21 @@ class CustemListViewSeparatedQuiz extends StatelessWidget {
     return ListView.separated(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
-        itemBuilder: (context, index) => CustemItemRadioQuiaScreen(
-              text: _qiuzScreenController.option[index],
-            ),
+        itemBuilder: (context, index) => StreamBuilder<int>(
+            stream: _qiuzScreenController.outputDataGroupValue,
+            builder: (context, snapshot) {
+              return CustemItemRadioQuiaScreen(
+                onTap: () {
+                  _qiuzScreenController.onTapAtItemRadio(index);
+                },
+                isSelected: snapshot.data == null
+                    ? false
+                    : snapshot.data == index
+                        ? true
+                        : false,
+                text: _qiuzScreenController.option[index],
+              );
+            }),
         separatorBuilder: (context, index) => const SizedBox(
               height: 25,
             ),
