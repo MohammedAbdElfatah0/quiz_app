@@ -15,21 +15,18 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   late OnBoardingController _onBoardingController;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _onBoardingController = OnBoardingController();
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     _onBoardingController.onDispose();
   }
 
   @override
   Widget build(BuildContext context) {
-   
     return Scaffold(
       bottomNavigationBar: CustemBottonBarOnboardingscreen(
         onTapSkip: () {

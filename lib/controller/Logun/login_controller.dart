@@ -25,12 +25,13 @@ class LoginController {
     } else if (value.length < 5) {
       return 'short name';
     } else
+      // ignore: curly_braces_in_flow_control_structures
       return null;
   }
 
   void onChangeTextFormField() {
     if (keyForm.currentState!.validate()) {
-      print('good man pro');
+      
       buttonisActive = true;
     } else {
       buttonisActive = false;

@@ -7,7 +7,9 @@ import '../../../core/resources/strings_value.dart';
 class CustemAppBarQuizzScreen extends StatelessWidget
     implements PreferredSizeWidget {
   const CustemAppBarQuizzScreen({
-    super.key, required this.onTap, required this.text,
+    super.key,
+    required this.onTap,
+    required this.text,
   });
   final Function() onTap;
   final String text;
@@ -16,7 +18,7 @@ class CustemAppBarQuizzScreen extends StatelessWidget
     return AppBar(
       leadingWidth: 120,
       leading: InkWell(
-        onTap:onTap,
+        onTap: onTap,
         child: const Padding(
           padding: EdgeInsets.only(left: 24),
           child: Row(
@@ -37,9 +39,10 @@ class CustemAppBarQuizzScreen extends StatelessWidget
           ),
         ),
       ),
-      title:  Text(
+      title: Text(
         text,
-        style:const TextStyle(fontSize: FontSize.k18, fontWeight: FontWeight.bold),
+        style: const TextStyle(
+            fontSize: FontSize.k18, fontWeight: FontWeight.bold),
       ),
       centerTitle: true,
       backgroundColor: ColorManager.kLightWhiteColor,
@@ -47,6 +50,5 @@ class CustemAppBarQuizzScreen extends StatelessWidget
   }
 
   @override
-  // TODO: implement preferredSize
   Size get preferredSize => const Size(double.infinity, kToolbarHeight);
 }
