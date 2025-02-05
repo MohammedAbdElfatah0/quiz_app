@@ -7,29 +7,25 @@ import 'custem_radio_quiz_screen.dart';
 
 class CustemItemRadioQuiaScreen extends StatelessWidget {
   const CustemItemRadioQuiaScreen({
-    super.key,
+    super.key, required this.text,
   });
-
+  final String text;
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding:
-          const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
       width: double.infinity,
       decoration: BoxDecoration(
           color: ColorManager.kWhiteColor,
           borderRadius: BorderRadius.circular(20)),
-      child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              '1986',
-              style: GoogleFonts.baloo2(
-                  fontSize: FontSize.k18,
-                  fontWeight: FontWeight.w600),
-            ),
-            const CustemRedioQuizScreen()
-          ]),
+      child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+        Text(
+          text,
+          style: GoogleFonts.baloo2(
+              fontSize: FontSize.k18, fontWeight: FontWeight.w600),
+        ),
+        const CustemRedioQuizScreen()
+      ]),
     );
   }
 }

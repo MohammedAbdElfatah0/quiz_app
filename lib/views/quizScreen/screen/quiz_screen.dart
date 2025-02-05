@@ -78,8 +78,9 @@ class _QuizScreenState extends State<QuizScreen> {
                 ListView.separated(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
-                    itemBuilder: (context, index) =>
-                        const CustemItemRadioQuiaScreen(),
+                    itemBuilder: (context, index) => CustemItemRadioQuiaScreen(
+                          text: 'title $index',
+                        ),
                     separatorBuilder: (context, index) => const SizedBox(
                           height: 25,
                         ),
