@@ -26,6 +26,7 @@ class AnswerScreen extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16),
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CustomQuestionNumberAnswerScreen(order: 1),
                 CustemStatusAnswerScreen()

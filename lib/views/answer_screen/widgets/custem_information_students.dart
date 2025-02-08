@@ -23,7 +23,7 @@ class CustomInformationStudent extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(
           boxShadow: const [
-            BoxShadow(blurRadius: 5, spreadRadius: -5, offset: Offset(0, 10)),
+            BoxShadow(blurRadius: 5, spreadRadius: -5, offset: Offset(0, 10),),
           ],
           color: ColorManager.kWhiteColor,
           borderRadius: BorderRadius.circular(20)),

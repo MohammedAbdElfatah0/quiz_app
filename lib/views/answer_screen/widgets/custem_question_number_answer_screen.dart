@@ -23,13 +23,14 @@ class CustomQuestionNumberAnswerScreen extends StatelessWidget {
           boxShadow: [
             BoxShadow(blurRadius: 5, spreadRadius: -5, offset: Offset(0, 10)),
           ],
-          color: ColorManager.kWhiteColor,
+          color: ColorManager.kGreenColor,
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(20),
             bottomRight: Radius.circular(20),
             topLeft: Radius.circular(20),
           )),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
