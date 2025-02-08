@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class ColorManager {
-  static const Color kPrimaryColor = Color(0xFF473F97);
-  static const Color kSecondColor = Color(0xFF3D003E);
-  static const Color kGreenColor = Color.fromARGB(255, 9, 197, 91);
-  static const Color kWhiteColor = Color(0xFFFFFFFF);
-  static const Color kLightWhiteColor = Color(0xFFEFF0F3);
-  static const Color kGreyColor = Colors.grey;
+class ColorManager{
+  static const Color kPrimaryColor=Color(0xff473F97);
+  static const Color kWhiteColor=Colors.white;
+  static const Color kGreyColor=Color(0xff979797);
+  static const Color kDarkPanfseg=Color(0xff3D003E);
+  static const Color kLightWhite=Color(0xffEFF0F3);
+  static const Color kGreenBold=Color(0xff35AC05);
 }

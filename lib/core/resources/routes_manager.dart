@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:quiz/views/answer_screen/screens/answer_screen.dart';
-import 'package:quiz/views/login/screen/Login_screen.dart';
-import 'package:quiz/views/on_boarding/screen/on_boarding_view.dart';
-import 'package:quiz/views/quizScreen/screen/quiz_screen.dart';
-import 'package:quiz/views/splach/screen/splach_view.dart';
+import 'package:quiz/view/answer_screen/screens/answers_screen.dart';
+import 'package:quiz/view/login/screens/login_screen.dart';
+import 'package:quiz/view/on_boarding/screen/on_boarding_screen.dart';
+import 'package:quiz/view/quiz/screens/quiz_screen.dart';
+import 'package:quiz/view/splash/screens/splash_screen.dart';
 
 class RoutesManager {
   static Map<String, WidgetBuilder> routes = {
-    RoutesName.kSplachScreen: (context) => const SplachView(),
-    RoutesName.kOnBoardingScreen: (context) => const OnBoardingView(),
+    RoutesName.kSplashScreen: (context) => const SplashScreen(),
+    RoutesName.kOnBoardgingScreen: (context) => const OnBoardingScreen(),
     RoutesName.kLoginScreen: (context) => const LoginScreen(),
     RoutesName.kQuizScreen: (context) => const QuizScreen(),
     RoutesName.kAnswerScreen: (context) => const AnswerScreen(),
@@ -16,9 +16,9 @@ class RoutesManager {
 }
 
 class RoutesName {
-  static const String kSplachScreen = '/kSplachScreen';
-  static const String kOnBoardingScreen = '/kOnBoarding';
-  static const String kLoginScreen = '/login';
-  static const String kQuizScreen = '/quiz';
-  static const String kAnswerScreen = '/AnswerScreen';
+  static const String kSplashScreen = '/kSplashScreen';
+  static const String kOnBoardgingScreen = '/kOnBoardgingScreen';
+  static const String kLoginScreen = '/kLoginScreen';
+  static const String kQuizScreen = '/kQuizScreen';
+  static const String kAnswerScreen = '/kAnswerScreen';
 }

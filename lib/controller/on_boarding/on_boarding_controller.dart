@@ -1,75 +1,65 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:quiz/core/resources/const_value.dart';
+import 'package:quiz/core/resources/const_values.dart';
 import 'package:quiz/core/resources/routes_manager.dart';
 
 class OnBoardingController {
   int currentPositionPage = 0;
-
-  //next
   late StreamController<int> streamControllerDotIndicator;
-  late Sink<int> inPutDataDotIndicator;
+  late StreamController<int> streamControllerStartText;
+  late Sink<int> inputDataDotIndicator;
   late Stream<int> outPutDataDotIndicator;
-  //start
-  late StreamController<int> streamControllerStratText;
-  late Sink<int> inPutDataStartText;
+  late PageController onBoardgingPageViewController;
+  late Sink<int> inputDataStartText;
   late Stream<int> outPutDataStartText;
-
-  late PageController onBoardingPageviewController;
-
   bool isTappedDotIndicator = false;
 
   OnBoardingController() {
     streamControllerDotIndicator = StreamController();
-    inPutDataDotIndicator = streamControllerDotIndicator.sink;
+    inputDataDotIndicator = streamControllerDotIndicator.sink;
     outPutDataDotIndicator = streamControllerDotIndicator.stream;
-    inPutDataDotIndicator.add(currentPositionPage);
-
-    streamControllerStratText = StreamController();
-    inPutDataStartText = streamControllerStratText.sink;
-    outPutDataStartText = streamControllerStratText.stream;
-    inPutDataStartText.add(currentPositionPage);
-
-    onBoardingPageviewController =
+    streamControllerStartText = StreamController();
+    inputDataStartText = streamControllerStartText.sink;
+    outPutDataStartText = streamControllerStartText.stream;
+    inputDataDotIndicator.add(currentPositionPage);
+    inputDataStartText.add(currentPositionPage);
+    onBoardgingPageViewController =
         PageController(initialPage: currentPositionPage);
   }
 
   void onTapDotIndicator(int indexPosition) {
     currentPositionPage = indexPosition;
-    inPutDataDotIndicator.add(currentPositionPage);
-    inPutDataStartText.add(currentPositionPage);
+    inputDataDotIndicator.add(currentPositionPage);
+    onBoardgingPageViewController.animateToPage(currentPositionPage,
+        duration: const Duration(milliseconds: 400), curve: Curves.easeInOut);
 
-    onBoardingPageviewController.animateToPage(currentPositionPage,
-        duration: const Duration(seconds: 3), curve: Easing.linear);
+    inputDataStartText.add(currentPositionPage);
   }
 
-  void onTapNext(BuildContext context) {
+  void onTabNext(BuildContext context) {
     if (currentPositionPage == ConstValue.onBoardingListConst.length - 1) {
-      onTapSkip(context: context);
+      goToLoginPage(context: context);
     } else {
-      currentPositionPage++;
+      currentPositionPage = currentPositionPage + 1;
     }
-    onBoardingPageviewController.animateToPage(currentPositionPage,
-        duration: const Duration(microseconds: 400), curve: Curves.linear);
-    inPutDataDotIndicator.add(currentPositionPage);
-    inPutDataStartText.add(currentPositionPage);
+    onBoardgingPageViewController.animateToPage(currentPositionPage,
+        duration: const Duration(milliseconds: 400), curve: Curves.easeInOut);
+    inputDataDotIndicator.add(currentPositionPage);
+
+    inputDataStartText.add(currentPositionPage);
   }
 
-  void onTapSkip({required BuildContext context}) {
+  void goToLoginPage({required BuildContext context}) {
     Navigator.pushNamedAndRemoveUntil(
-      context,
-      RoutesName.kLoginScreen,
-      (route) => false,
-    );
+        context, RoutesName.kLoginScreen, (route) => false);
   }
 
   void onDispose() {
-    inPutDataDotIndicator.close();
+    inputDataDotIndicator.close();
     streamControllerDotIndicator.close();
-    inPutDataStartText.close();
-    streamControllerStratText.close();
-    streamControllerDotIndicator.close();
-    streamControllerStratText.close();
+    inputDataStartText.close();
+    streamControllerStartText.close();
+    onBoardgingPageViewController.dispose();
   }
 }
