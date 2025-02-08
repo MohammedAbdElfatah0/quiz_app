@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz/core/resources/const_value.dart';
 
 import '../../../controller/quiz/qiuz_screen_controller.dart';
 import 'custem_item_radio_quiz_screen.dart';
@@ -28,12 +29,14 @@ class CustemListViewSeparatedQuiz extends StatelessWidget {
                     : snapshot.data == index
                         ? true
                         : false,
-                text: _qiuzScreenController.option[index],
+                text: ConstValue.questionList[_qiuzScreenController.questionNow]
+                    .listOfAnswer[index]
+                    .toString(),
               );
             }),
         separatorBuilder: (context, index) => const SizedBox(
               height: 25,
             ),
-        itemCount: _qiuzScreenController.option.length);
+        itemCount: _qiuzScreenController.countQuestion);
   }
 }

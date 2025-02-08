@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quiz/controller/quiz/qiuz_screen_controller.dart';
 
 import 'package:quiz/core/resources/color_manager.dart';
+import 'package:quiz/core/resources/const_value.dart';
 import 'package:quiz/core/resources/height_managers.dart';
 import 'package:quiz/core/resources/strings_value.dart';
 import 'package:quiz/views/login/widget/custem_button_login_screen.dart';
@@ -74,9 +75,9 @@ class _QuizScreenState extends State<QuizScreen> {
                         text: '40',
                       ),
                     ),
-                    const CustemQuestionQuizzScreen(
+                     CustemQuestionQuizzScreen(
                       titleQuestion:
-                          'In what year did the United States host the FIFA World Cup for the first time?',
+                          ConstValue.questionList[_qiuzScreenController.questionNow].question,
                     )
                   ],
                 ),
