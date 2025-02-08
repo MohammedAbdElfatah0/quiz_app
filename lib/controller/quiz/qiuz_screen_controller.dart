@@ -40,7 +40,7 @@ class QiuzScreenController {
     animationController = AnimationController(
       vsync: vsync,
       duration: const Duration(
-        seconds: 30,
+        seconds: 5,
       ),
     );
     countQuestion = ConstValue.questionList.length;
@@ -77,18 +77,28 @@ class QiuzScreenController {
   }
 
   void forwardAnimation() {
+    animationController.reset();
     animationController.forward();
     animationController.addListener(() {
       animationProgressPercent = tween.evaluate(animationController);
-      inputDataStreamTime.add((animationProgressPercent * 30).toInt());
+      inputDataStreamTime.add((animationProgressPercent * 5).toInt());
       inputPutAnimationProgress.add(animationProgressPercent);
     });
   }
 
+  void restartAnimation() {
+    animationController.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        nextQuestion();
+        print('next done');
+      } 
+      
+    });
+  }
+
   void makeCounterTimerNow() {
-
-
-      inputDataStreamTime.add((animationProgressPercent * 30).toInt());
+    forwardAnimation();
+    inputDataStreamTime.add((animationProgressPercent * 5).toInt());
   }
 
   void nextQuestion() {
@@ -101,12 +111,12 @@ class QiuzScreenController {
     inputDataGroupValue.add(groupValueIndex);
     if (questionNow >= countQuestion - 1) {
       animationStatus = false;
-          inputPutAnimationProgress.add(animationProgressPercent);
-
+      inputPutAnimationProgress.add(animationProgressPercent);
     } else {
       questionNow++;
       makeCounterTimerNow();
     }
+    inputDataStreamNextQuestion.add(questionNow);
   }
 
   void onTapAtItemRadio(int index) {

@@ -28,7 +28,6 @@ class CustemCircularPercentIndicatorQuizzScreen extends StatelessWidget {
               radius: 45,
               percent: snapshot.data == null ? 0 : snapshot.data!,
               progressColor: ColorManager.kPrimaryColor,
-              // animation: snapshot.data == null ? true : snapshot.data!,
               animationDuration: 30000,
               restartAnimation: true,
               backgroundColor: ColorManager.kPrimaryColor.withOpacity(0.38),
