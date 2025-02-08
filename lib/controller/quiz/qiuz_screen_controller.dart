@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:quiz/core/resources/const_value.dart';
+
 class QiuzScreenController {
   List<String> option = ['1999', '1955', '1978', '1998'];
 
@@ -13,7 +15,10 @@ class QiuzScreenController {
   late Stream<bool> isActiveOutputStream;
   bool isActive = false;
 
+  int countQuestion = 0;
+
   QiuzScreenController() {
+    countQuestion = ConstValue.questionList.length;
     streamControllerGroupValueIndex = StreamController();
     inputDataGroupValue = streamControllerGroupValueIndex.sink;
     outputDataGroupValue =

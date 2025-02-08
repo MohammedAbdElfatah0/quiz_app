@@ -93,7 +93,7 @@ class _QuizScreenState extends State<QuizScreen> {
       backgroundColor: ColorManager.kLightWhiteColor,
       appBar: CustemAppBarQuizzScreen(
         onTap: () => Navigator.canPop(context),
-        text: '7/10',
+        text: '7/${_qiuzScreenController.countQuestion}',
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 15),

@@ -2,6 +2,7 @@ import 'package:quiz/core/resources/assets_images_manager.dart';
 import 'package:quiz/core/resources/strings_value.dart';
 
 import '../../models/on_bording/onboarding_screen_model.dart';
+import '../../models/qiuz/question_model.dart';
 
 class ConstValue {
   static List<OnBoardingScreenModel> onBoardingListConst = [
@@ -17,5 +18,20 @@ class ConstValue {
         onBoardingImage: AssetsImagesManager.onBoardingImage2,
         onBoardingTitle: StringsValue.kCoolQuiz,
         onBoardingSubTitle: StringsValue.kCoolQuizSubTitile)
+  ];
+
+  static List<QuestionModel> questionList = [
+    QuestionModel(
+        question: "What is the capital of France?",
+        listOfAnswer: ["Paris", "London", "Berlin", "Madrid"],
+        correctAnswer: "Paris"),
+    QuestionModel(
+        question: "What is 2 + 2?",
+        listOfAnswer: ["3", "4", "5", "6"],
+        correctAnswer: "4"),
+    QuestionModel(
+        question: "What is the largest planet in our solar system?",
+        listOfAnswer: ["Earth", "Mars", "Jupiter", "Saturn"],
+        correctAnswer: "Jupiter")
   ];
 }
