@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz/core/resources/color_manager.dart';
+import 'package:quiz/views/answer_screen/widgets/custem_question_number_answer_screen.dart';
 
 import '../widgets/custem_information_students.dart';
 
@@ -17,6 +18,15 @@ class AnswerScreen extends StatelessWidget {
           CustomInformationStudent(
             name: 'mohamed',
             grade: '5/5',
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: Row(
+              children: [CustomQuestionNumberAnswerScreen(order: 1)],
+            ),
           )
         ],
       ),
