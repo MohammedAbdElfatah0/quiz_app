@@ -37,6 +37,10 @@ class QiuzScreenController {
   late Sink<double> inputPutAnimationProgress;
   late Stream<double> outPutAnimationProgress;
 
+  late StreamController<String> streamControllerQuestionNow;
+  late Sink<String> inPutQuestionNow;
+  late Stream<String> outPutQuestionNow;
+
   QiuzScreenController(SingleTickerProviderStateMixin vsync, context) {
     _context = context;
     animationController = AnimationController(
@@ -57,6 +61,13 @@ class QiuzScreenController {
     isActiveOutputStream =
         streamControllerButtonStatus.stream.asBroadcastStream();
     inputDataButtonStatus.add(isActive);
+
+    //
+    streamControllerQuestionNow = StreamController();
+    inPutQuestionNow = streamControllerQuestionNow.sink;
+    outPutQuestionNow = streamControllerQuestionNow.stream.asBroadcastStream();
+    
+    inPutQuestionNow.add('${questionNow + 1}/$countQuestion');
 //timer
     streamControllertime = StreamController();
     inputDataStreamTime = streamControllertime.sink;
@@ -114,13 +125,14 @@ class QiuzScreenController {
     groupValueIndex = -1;
     inputDataGroupValue.add(groupValueIndex);
     if (questionNow >= countQuestion - 1) {
-      // inputPutAnimationProgress.add(animationProgressPercent);
+      inputPutAnimationProgress.add(animationProgressPercent);
       goToAnswerScreen();
     } else {
       questionNow++;
       makeCounterTimerNow();
     }
     inputDataStreamNextQuestion.add(questionNow);
+    inPutQuestionNow.add('${questionNow + 1}/$countQuestion');
   }
 
   void onTapAtItemRadio(int index) {
@@ -153,6 +165,8 @@ class QiuzScreenController {
     inputPutAnimationProgress.close();
     streamControllertNextQuestion.close();
     inputDataStreamNextQuestion.close();
+    streamControllerQuestionNow.close();
+    inPutQuestionNow.close();
 
     animationController.dispose();
   }

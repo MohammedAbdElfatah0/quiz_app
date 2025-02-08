@@ -98,8 +98,8 @@ class _QuizScreenState extends State<QuizScreen>
       backgroundColor: ColorManager.kLightWhiteColor,
       appBar: CustemAppBarQuizzScreen(
         onTap: () => Navigator.canPop(context),
-        text:
-            '${_qiuzScreenController.questionNow + 1}/${_qiuzScreenController.countQuestion}',
+        outPutQuestionNow:
+            _qiuzScreenController.outPutQuestionNow,
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 15),

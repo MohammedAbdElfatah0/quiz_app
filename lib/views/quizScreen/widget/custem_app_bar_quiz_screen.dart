@@ -9,10 +9,10 @@ class CustemAppBarQuizzScreen extends StatelessWidget
   const CustemAppBarQuizzScreen({
     super.key,
     required this.onTap,
-    required this.text,
+    required this.outPutQuestionNow,
   });
   final Function() onTap;
-  final String text;
+  final Stream<String> outPutQuestionNow;
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -39,10 +39,15 @@ class CustemAppBarQuizzScreen extends StatelessWidget
           ),
         ),
       ),
-      title: Text(
-        text,
-        style: const TextStyle(
-            fontSize: FontSize.k18, fontWeight: FontWeight.bold),
+      title: StreamBuilder<String>(
+        stream: outPutQuestionNow,
+        builder: (context, snapshot) {
+          return Text(
+            snapshot.data==null?'':snapshot.data!,
+            style: const TextStyle(
+                fontSize: FontSize.k18, fontWeight: FontWeight.bold),
+          );
+        }
       ),
       centerTitle: true,
       backgroundColor: ColorManager.kLightWhiteColor,
