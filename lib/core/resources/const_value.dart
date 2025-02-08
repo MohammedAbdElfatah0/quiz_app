@@ -24,14 +24,14 @@ class ConstValue {
     QuestionModel(
         question: "What is the capital of France?",
         listOfAnswer: ["Paris", "London", "Berlin", "Madrid"],
-        correctAnswer: "Paris"),
+        correctAnswer: 0),
     QuestionModel(
         question: "What is 2 + 2?",
         listOfAnswer: ["3", "4", "5", "6"],
-        correctAnswer: "4"),
+        correctAnswer: 1),
     QuestionModel(
         question: "What is the largest planet in our solar system?",
         listOfAnswer: ["Earth", "Mars", "Jupiter", "Saturn"],
-        correctAnswer: "Jupiter")
+        correctAnswer: 2)
   ];
 }

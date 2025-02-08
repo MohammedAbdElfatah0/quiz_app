@@ -8,8 +8,10 @@ class CustomQuestionNumberAnswerScreen extends StatelessWidget {
   const CustomQuestionNumberAnswerScreen({
     super.key,
     required this.order,
+    required this.isCorrect,
   });
   final int order;
+  final bool isCorrect;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,12 +21,13 @@ class CustomQuestionNumberAnswerScreen extends StatelessWidget {
         horizontal: 10,
       ),
       alignment: Alignment.center,
-      decoration: const BoxDecoration(
-          boxShadow: [
-            BoxShadow(blurRadius: 5, spreadRadius: -5, offset: Offset(0, 10)),
+      decoration: BoxDecoration(
+          boxShadow: const[
+             BoxShadow(
+                blurRadius: 5, spreadRadius: -5, offset: Offset(0, 10)),
           ],
-          color: ColorManager.kGreenColor,
-          borderRadius: BorderRadius.only(
+          color: isCorrect ? ColorManager.kGreenColor : Colors.red,
+          borderRadius: const BorderRadius.only(
             bottomLeft: Radius.circular(20),
             bottomRight: Radius.circular(20),
             topLeft: Radius.circular(20),
@@ -36,9 +39,9 @@ class CustomQuestionNumberAnswerScreen extends StatelessWidget {
           Text(
             "$order",
             style: GoogleFonts.baloo2(
-              fontWeight: FontWeight.bold,
-              fontSize: FontSize.k21,
-            ),
+                fontWeight: FontWeight.bold,
+                fontSize: FontSize.k21,
+                color: ColorManager.kWhiteColor),
           ),
         ],
       ),

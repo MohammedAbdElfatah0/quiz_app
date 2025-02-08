@@ -1,10 +1,10 @@
 class QuestionModel {
   late String _question;
-  late List<dynamic> _listOfAnswer;
-  late dynamic _correctAnswer;
+  late List<String> _listOfAnswer;
+  late int _correctAnswer;
   QuestionModel({
     required String question,
-    required List<dynamic> listOfAnswer,
+    required List<String> listOfAnswer,
     required dynamic correctAnswer,
   })  : _question = question,
         _listOfAnswer = listOfAnswer,
@@ -13,9 +13,9 @@ class QuestionModel {
   String get question => _question;
   set question(String question) => _question = question;
 
-  List<dynamic> get listOfAnswer => _listOfAnswer;
-  set listOfAnswer(List<dynamic> listOfAnswer) => _listOfAnswer = listOfAnswer;
+  List<String> get listOfAnswer => _listOfAnswer;
+  set listOfAnswer(List<String> listOfAnswer) => _listOfAnswer = listOfAnswer;
 
-  dynamic get correctAnswer => _correctAnswer;
-  set correctAnswer(dynamic correctAnswer) => _correctAnswer = correctAnswer;
+  int get correctAnswer => _correctAnswer;
+  set correctAnswer(int correctAnswer) => _correctAnswer = correctAnswer;
 }

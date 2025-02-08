@@ -47,7 +47,7 @@ class QiuzScreenController {
     animationController = AnimationController(
       vsync: vsync,
       duration: const Duration(
-        seconds: 5,
+        seconds: 30,
       ),
     );
     countQuestion = ConstValue.questionList.length;
@@ -95,7 +95,7 @@ class QiuzScreenController {
     animationController.forward();
     animationController.addListener(() {
       animationProgressPercent = tween.evaluate(animationController);
-      inputDataStreamTime.add((animationProgressPercent * 5).toInt());
+      inputDataStreamTime.add((animationProgressPercent * 30).toInt());
       inputPutAnimationProgress.add(animationProgressPercent);
     });
   }
@@ -110,14 +110,14 @@ class QiuzScreenController {
 
   void makeCounterTimerNow() {
     forwardAnimation();
-    inputDataStreamTime.add((animationProgressPercent * 5).toInt());
+    inputDataStreamTime.add((animationProgressPercent * 30).toInt());
   }
 
   void goToAnswerScreen() {
     Navigator.of(_context)
         .pushReplacementNamed(RoutesName.kAnswerScreen, arguments: {
       'name': _name,
-      'lsitCorrectAnswer': lsitCorrectAnswer,
+      'listCorrectAnswer': lsitCorrectAnswer,
     });
   }
 
