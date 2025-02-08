@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz/views/answer_screen/screens/answer_screen.dart';
 import 'package:quiz/views/login/screen/Login_screen.dart';
 import 'package:quiz/views/on_boarding/screen/on_boarding_view.dart';
 import 'package:quiz/views/quizScreen/screen/quiz_screen.dart';
@@ -10,6 +11,7 @@ class RoutesManager {
     RoutesName.kOnBoardingScreen: (context) => const OnBoardingView(),
     RoutesName.kLoginScreen: (context) => const LoginScreen(),
     RoutesName.kQuizScreen: (context) => const QuizScreen(),
+    RoutesName.kAnswerScreen: (context) => const AnswerScreen(),
   };
 }
 
@@ -18,4 +20,5 @@ class RoutesName {
   static const String kOnBoardingScreen = '/kOnBoarding';
   static const String kLoginScreen = '/login';
   static const String kQuizScreen = '/quiz';
+  static const String kAnswerScreen = '/AnswerScreen';
 }
