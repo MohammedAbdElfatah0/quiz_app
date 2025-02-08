@@ -22,7 +22,7 @@ class CustemButtonLoginScreen extends StatelessWidget {
         return ElevatedButton(
           style: ButtonStyle(
               padding: const WidgetStatePropertyAll(
-                  EdgeInsets.symmetric(vertical: 5)),
+                  EdgeInsets.symmetric(vertical: 5, horizontal: 40)),
               backgroundColor: WidgetStatePropertyAll(snapshot.data == null
                   ? ColorManager.kGreyColor
                   : snapshot.data == true

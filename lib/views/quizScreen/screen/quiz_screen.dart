@@ -38,8 +38,8 @@ class _QuizScreenState extends State<QuizScreen>
 
   @override
   Widget build(BuildContext context) {
-    // String name = ModalRoute.of(context)!.settings.arguments as String;
-
+    String name = ModalRoute.of(context)!.settings.arguments as String;
+    _qiuzScreenController.giveName(name);
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
@@ -98,8 +98,7 @@ class _QuizScreenState extends State<QuizScreen>
       backgroundColor: ColorManager.kLightWhiteColor,
       appBar: CustemAppBarQuizzScreen(
         onTap: () => Navigator.canPop(context),
-        outPutQuestionNow:
-            _qiuzScreenController.outPutQuestionNow,
+        outPutQuestionNow: _qiuzScreenController.outPutQuestionNow,
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 15),

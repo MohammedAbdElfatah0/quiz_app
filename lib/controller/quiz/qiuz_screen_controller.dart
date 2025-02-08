@@ -14,6 +14,7 @@ class QiuzScreenController {
   late Stream<bool> isActiveOutputStream;
   bool isActive = false;
 
+  late String _name;
   int countQuestion = 0;
   int questionNow = 0;
 
@@ -66,7 +67,7 @@ class QiuzScreenController {
     streamControllerQuestionNow = StreamController();
     inPutQuestionNow = streamControllerQuestionNow.sink;
     outPutQuestionNow = streamControllerQuestionNow.stream.asBroadcastStream();
-    
+
     inPutQuestionNow.add('${questionNow + 1}/$countQuestion');
 //timer
     streamControllertime = StreamController();
@@ -113,7 +114,15 @@ class QiuzScreenController {
   }
 
   void goToAnswerScreen() {
-    Navigator.of(_context).pushReplacementNamed(RoutesName.kAnswerScreen);
+    Navigator.of(_context)
+        .pushReplacementNamed(RoutesName.kAnswerScreen, arguments: {
+      'name': _name,
+      'lsitCorrectAnswer': lsitCorrectAnswer,
+    });
+  }
+
+  void giveName(String name) {
+    _name = name;
   }
 
   void nextQuestion() {

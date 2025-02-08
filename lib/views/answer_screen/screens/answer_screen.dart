@@ -5,6 +5,9 @@ class AnswerScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Map<String, dynamic> data =
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+    print(data);
     return const Scaffold();
   }
 }

@@ -11,7 +11,7 @@ class QuizApp extends StatelessWidget {
       routes: RoutesManager.routes,
       theme: ThemeData(fontFamily: FontManager.kFontMananger),
       debugShowCheckedModeBanner: false,
-      initialRoute: RoutesName.kQuizScreen,
+      initialRoute: RoutesName.kSplachScreen,
     );
   }
 }
