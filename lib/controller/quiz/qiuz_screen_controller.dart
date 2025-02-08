@@ -3,8 +3,6 @@ import 'dart:async';
 import 'package:quiz/core/resources/const_value.dart';
 
 class QiuzScreenController {
- 
-
   int groupValueIndex = -1;
   late StreamController<int> streamControllerGroupValueIndex;
   late Sink<int> inputDataGroupValue;
@@ -19,6 +17,7 @@ class QiuzScreenController {
   int questionNow = 0;
 
   int conterTimerNow = 0;
+  bool animationStatus = true;
   late StreamController<int> streamControllertime;
   late Sink<int> inputDataStreamTime;
   late Stream<int> outPutStreamTime;
@@ -26,6 +25,10 @@ class QiuzScreenController {
   late StreamController<int> streamControllertNextQuestion;
   late Sink<int> inputDataStreamNextQuestion;
   late Stream<int> outPutStreamNextQuestion;
+
+  late StreamController<bool> streamControllerAnimationStatus;
+  late Sink<bool> inputDataBAnimationStatus;
+  late Stream<bool> outPutStreamAnimationStatus;
 
   QiuzScreenController() {
     countQuestion = ConstValue.questionList.length;
@@ -51,6 +54,13 @@ class QiuzScreenController {
     outPutStreamNextQuestion =
         streamControllertNextQuestion.stream.asBroadcastStream();
     inputDataStreamNextQuestion.add(questionNow);
+
+    streamControllerAnimationStatus = StreamController();
+    inputDataBAnimationStatus = streamControllerAnimationStatus.sink;
+    outPutStreamAnimationStatus =
+        streamControllerAnimationStatus.stream.asBroadcastStream();
+    inputDataBAnimationStatus.add(animationStatus);
+
     makeCounterTimerNow();
   }
 
@@ -73,6 +83,8 @@ class QiuzScreenController {
 
   void nextQuestion() {
     if (questionNow >= countQuestion - 1) {
+      animationStatus = false;
+      inputDataBAnimationStatus.add(animationStatus);
       print("con't increment");
     } else {
       questionNow++;

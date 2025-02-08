@@ -72,7 +72,7 @@ class _QuizScreenState extends State<QuizScreen> {
                       left: 0,
                       child: CustemCircularPercentIndicatorQuizzScreen(
                         outPutStreamTime:
-                            _qiuzScreenController.outPutStreamTime,
+                            _qiuzScreenController.outPutStreamTime, outPutStreamAnimationState: _qiuzScreenController.outPutStreamAnimationStatus,
                       ),
                     ),
                     CustemQuestionQuizzScreen(
