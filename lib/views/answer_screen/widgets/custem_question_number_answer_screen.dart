@@ -3,14 +3,17 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../core/resources/color_manager.dart';
 import '../../../core/resources/font_manager.dart';
+
 class CustomQuestionNumberAnswerScreen extends StatelessWidget {
   const CustomQuestionNumberAnswerScreen({
-    super.key, required this.order,
+    super.key,
+    required this.order,
   });
   final int order;
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 38,
       width: 58,
       padding: const EdgeInsets.symmetric(
         horizontal: 10,
