@@ -67,17 +67,19 @@ class _QuizScreenState extends State<QuizScreen> {
                           color: ColorManager.kWhiteColor,
                           borderRadius: BorderRadius.circular(20)),
                     ),
-                    const Positioned(
+                    Positioned(
                       top: -30,
                       right: 0,
                       left: 0,
                       child: CustemCircularPercentIndicatorQuizzScreen(
-                        text: '40',
+                        outPutStreamTime:
+                            _qiuzScreenController.outPutStreamTime,
                       ),
                     ),
-                     CustemQuestionQuizzScreen(
-                      titleQuestion:
-                          ConstValue.questionList[_qiuzScreenController.questionNow].question,
+                    CustemQuestionQuizzScreen(
+                      titleQuestion: ConstValue
+                          .questionList[_qiuzScreenController.questionNow]
+                          .question,
                     )
                   ],
                 ),

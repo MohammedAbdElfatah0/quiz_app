@@ -7,9 +7,11 @@ import '../../../core/resources/font_manager.dart';
 class CustemCircularPercentIndicatorQuizzScreen extends StatelessWidget {
   const CustemCircularPercentIndicatorQuizzScreen({
     super.key,
-    required this.text,
+
+    required this.outPutStreamTime,
   });
-  final String text;
+
+  final Stream<int> outPutStreamTime;
   @override
   Widget build(BuildContext context) {
     return CircleAvatar(
@@ -24,11 +26,15 @@ class CustemCircularPercentIndicatorQuizzScreen extends StatelessWidget {
         animationDuration: 30000,
         restartAnimation: true,
         backgroundColor: ColorManager.kPrimaryColor.withOpacity(0.38),
-        center: Text(
-          text,
-          style: const TextStyle(
-              fontSize: FontSize.k32, fontWeight: FontWeight.w600),
-        ),
+        center: StreamBuilder<int>(
+            stream: outPutStreamTime,
+            builder: (context, snapshot) {
+              return Text(
+                snapshot.data == null ? '0' : snapshot.data.toString(),
+                style: const TextStyle(
+                    fontSize: FontSize.k32, fontWeight: FontWeight.w600),
+              );
+            }),
       ),
     );
   }

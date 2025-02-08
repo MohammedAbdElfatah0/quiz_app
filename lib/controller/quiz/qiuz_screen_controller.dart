@@ -18,6 +18,11 @@ class QiuzScreenController {
   int countQuestion = 0;
   int questionNow = 0;
 
+  int conterTimerNow = 0;
+  late StreamController<int> streamControllertime;
+  late Sink<int> inputDataStreamTime;
+  late Stream<int> outPutStreamTime;
+
   QiuzScreenController() {
     countQuestion = ConstValue.questionList.length;
     streamControllerGroupValueIndex = StreamController();
@@ -25,13 +30,32 @@ class QiuzScreenController {
     outputDataGroupValue =
         streamControllerGroupValueIndex.stream.asBroadcastStream();
     inputDataGroupValue.add(groupValueIndex);
-
+//is actrive
     streamControllerButtonStatus = StreamController();
     inputDataButtonStatus = streamControllerButtonStatus.sink;
     isActiveOutputStream =
         streamControllerButtonStatus.stream.asBroadcastStream();
     inputDataButtonStatus.add(isActive);
+//timer
+    streamControllertime = StreamController();
+    inputDataStreamTime = streamControllertime.sink;
+    outPutStreamTime = streamControllertime.stream.asBroadcastStream();
+    inputDataStreamTime.add(conterTimerNow);
+    makeCounterTimerNow();
   }
+
+  void makeCounterTimerNow() {
+    for (int i = 0; i < 30; i++) {
+      Future.delayed(
+        Duration(seconds: i),
+        () {
+          conterTimerNow = i;
+          inputDataStreamTime.add(conterTimerNow);
+        },
+      );
+    }
+  }
+
   void onTapAtItemRadio(int index) {
     groupValueIndex = index;
     inputDataGroupValue.add(groupValueIndex);
@@ -48,5 +72,7 @@ class QiuzScreenController {
     inputDataGroupValue.close();
     streamControllerButtonStatus.close();
     inputDataButtonStatus.close();
+    inputDataStreamTime.close();
+    streamControllertime.close();
   }
 }
