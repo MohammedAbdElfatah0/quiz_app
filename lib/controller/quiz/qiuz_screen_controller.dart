@@ -16,6 +16,7 @@ class QiuzScreenController {
   bool isActive = false;
 
   int countQuestion = 0;
+  int questionNow = 0;
 
   QiuzScreenController() {
     countQuestion = ConstValue.questionList.length;
