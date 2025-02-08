@@ -18,13 +18,15 @@ class QuizScreen extends StatefulWidget {
   State<QuizScreen> createState() => _QuizScreenState();
 }
 
-class _QuizScreenState extends State<QuizScreen> {
+class _QuizScreenState extends State<QuizScreen>
+    with SingleTickerProviderStateMixin {
   late QiuzScreenController _qiuzScreenController;
 
   @override
   void initState() {
     super.initState();
-    _qiuzScreenController = QiuzScreenController();
+    _qiuzScreenController = QiuzScreenController(this);
+    _qiuzScreenController.forwardAnimation();
   }
 
   @override
@@ -72,7 +74,9 @@ class _QuizScreenState extends State<QuizScreen> {
                       left: 0,
                       child: CustemCircularPercentIndicatorQuizzScreen(
                         outPutStreamTime:
-                            _qiuzScreenController.outPutStreamTime, outPutStreamAnimationState: _qiuzScreenController.outPutStreamAnimationStatus,
+                            _qiuzScreenController.outPutStreamTime,
+                        outPutAnimationProgress:
+                            _qiuzScreenController.outPutAnimationProgress,
                       ),
                     ),
                     CustemQuestionQuizzScreen(
@@ -100,7 +104,9 @@ class _QuizScreenState extends State<QuizScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 15),
         child: CustemButtonLoginScreen(
             title: StringsValue.kNext,
-            onPressed: () {},
+            onPressed: () {
+              _qiuzScreenController.nextQuestion();
+            },
             isActiveOutputStream: _qiuzScreenController.isActiveOutputStream),
       ),
     );

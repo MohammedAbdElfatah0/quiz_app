@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:quiz/core/resources/const_value.dart';
 
 class QiuzScreenController {
@@ -18,6 +19,11 @@ class QiuzScreenController {
 
   int conterTimerNow = 0;
   bool animationStatus = true;
+  List<int> lsitCorrectAnswer = [];
+  late AnimationController animationController;
+  double animationProgressPercent = 0.0;
+  Tween<double> tween = Tween(begin: 0.0, end: 1.0);
+
   late StreamController<int> streamControllertime;
   late Sink<int> inputDataStreamTime;
   late Stream<int> outPutStreamTime;
@@ -26,11 +32,17 @@ class QiuzScreenController {
   late Sink<int> inputDataStreamNextQuestion;
   late Stream<int> outPutStreamNextQuestion;
 
-  late StreamController<bool> streamControllerAnimationStatus;
-  late Sink<bool> inputDataBAnimationStatus;
-  late Stream<bool> outPutStreamAnimationStatus;
+  late StreamController<double> streamControllerAnimationProgress;
+  late Sink<double> inputPutAnimationProgress;
+  late Stream<double> outPutAnimationProgress;
 
-  QiuzScreenController() {
+  QiuzScreenController(SingleTickerProviderStateMixin vsync) {
+    animationController = AnimationController(
+      vsync: vsync,
+      duration: const Duration(
+        seconds: 30,
+      ),
+    );
     countQuestion = ConstValue.questionList.length;
     streamControllerGroupValueIndex = StreamController();
     inputDataGroupValue = streamControllerGroupValueIndex.sink;
@@ -55,46 +67,58 @@ class QiuzScreenController {
         streamControllertNextQuestion.stream.asBroadcastStream();
     inputDataStreamNextQuestion.add(questionNow);
 
-    streamControllerAnimationStatus = StreamController();
-    inputDataBAnimationStatus = streamControllerAnimationStatus.sink;
-    outPutStreamAnimationStatus =
-        streamControllerAnimationStatus.stream.asBroadcastStream();
-    inputDataBAnimationStatus.add(animationStatus);
+    streamControllerAnimationProgress = StreamController();
+    inputPutAnimationProgress = streamControllerAnimationProgress.sink;
+    outPutAnimationProgress =
+        streamControllerAnimationProgress.stream.asBroadcastStream();
+    inputPutAnimationProgress.add(animationProgressPercent);
 
     makeCounterTimerNow();
   }
 
-  void makeCounterTimerNow() {
-    for (int i = 0; i < 31; i++) {
-      Future.delayed(
-        Duration(seconds: i),
-        () {
-          conterTimerNow = i;
-          inputDataStreamTime.add(conterTimerNow);
-          if (i == 30) {
-            nextQuestion();
-          }
-        },
-      );
-    }
+  void forwardAnimation() {
+    animationController.forward();
+    animationController.addListener(() {
+      animationProgressPercent = tween.evaluate(animationController);
+      inputDataStreamTime.add((animationProgressPercent * 30).toInt());
+      inputPutAnimationProgress.add(animationProgressPercent);
+    });
+  }
 
-    inputDataStreamNextQuestion.add(questionNow);
+  void makeCounterTimerNow() {
+
+
+      inputDataStreamTime.add((animationProgressPercent * 30).toInt());
   }
 
   void nextQuestion() {
+    if (questionNow == lsitCorrectAnswer.length) {
+      lsitCorrectAnswer.add(groupValueIndex);
+    } else {
+      lsitCorrectAnswer[questionNow] = groupValueIndex;
+    }
+    groupValueIndex = -1;
+    inputDataGroupValue.add(groupValueIndex);
     if (questionNow >= countQuestion - 1) {
       animationStatus = false;
-      inputDataBAnimationStatus.add(animationStatus);
-      print("con't increment");
+          inputPutAnimationProgress.add(animationProgressPercent);
+
     } else {
       questionNow++;
       makeCounterTimerNow();
-      print("increment");
     }
   }
 
   void onTapAtItemRadio(int index) {
     groupValueIndex = index;
+    if (questionNow == lsitCorrectAnswer.length) {
+      lsitCorrectAnswer.add(groupValueIndex);
+    } else {
+      lsitCorrectAnswer[questionNow] = groupValueIndex;
+    }
+    for (var i in lsitCorrectAnswer) {
+      print(i);
+    }
     inputDataGroupValue.add(groupValueIndex);
     if (groupValueIndex != -1) {
       isActive = true;
