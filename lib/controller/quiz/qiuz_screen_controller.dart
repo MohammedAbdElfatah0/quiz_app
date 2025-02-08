@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:quiz/core/resources/const_value.dart';
 
 class QiuzScreenController {
-  List<String> option = ['1999', '1955', '1978', '1998'];
+ 
 
   int groupValueIndex = -1;
   late StreamController<int> streamControllerGroupValueIndex;
@@ -23,6 +23,10 @@ class QiuzScreenController {
   late Sink<int> inputDataStreamTime;
   late Stream<int> outPutStreamTime;
 
+  late StreamController<int> streamControllertNextQuestion;
+  late Sink<int> inputDataStreamNextQuestion;
+  late Stream<int> outPutStreamNextQuestion;
+
   QiuzScreenController() {
     countQuestion = ConstValue.questionList.length;
     streamControllerGroupValueIndex = StreamController();
@@ -41,18 +45,39 @@ class QiuzScreenController {
     inputDataStreamTime = streamControllertime.sink;
     outPutStreamTime = streamControllertime.stream.asBroadcastStream();
     inputDataStreamTime.add(conterTimerNow);
+    //next Question
+    streamControllertNextQuestion = StreamController();
+    inputDataStreamNextQuestion = streamControllertNextQuestion.sink;
+    outPutStreamNextQuestion =
+        streamControllertNextQuestion.stream.asBroadcastStream();
+    inputDataStreamNextQuestion.add(questionNow);
     makeCounterTimerNow();
   }
 
   void makeCounterTimerNow() {
-    for (int i = 0; i < 30; i++) {
+    for (int i = 0; i < 31; i++) {
       Future.delayed(
         Duration(seconds: i),
         () {
           conterTimerNow = i;
           inputDataStreamTime.add(conterTimerNow);
+          if (i == 30) {
+            nextQuestion();
+          }
         },
       );
+    }
+
+    inputDataStreamNextQuestion.add(questionNow);
+  }
+
+  void nextQuestion() {
+    if (questionNow >= countQuestion - 1) {
+      print("con't increment");
+    } else {
+      questionNow++;
+      makeCounterTimerNow();
+      print("increment");
     }
   }
 
