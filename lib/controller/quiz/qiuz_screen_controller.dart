@@ -1,7 +1,7 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:quiz/core/resources/const_value.dart';
+import 'package:quiz/core/resources/routes_manager.dart';
 
 class QiuzScreenController {
   int groupValueIndex = -1;
@@ -23,6 +23,7 @@ class QiuzScreenController {
   late AnimationController animationController;
   double animationProgressPercent = 0.0;
   Tween<double> tween = Tween(begin: 0.0, end: 1.0);
+  late BuildContext _context;
 
   late StreamController<int> streamControllertime;
   late Sink<int> inputDataStreamTime;
@@ -36,7 +37,8 @@ class QiuzScreenController {
   late Sink<double> inputPutAnimationProgress;
   late Stream<double> outPutAnimationProgress;
 
-  QiuzScreenController(SingleTickerProviderStateMixin vsync) {
+  QiuzScreenController(SingleTickerProviderStateMixin vsync, context) {
+    _context = context;
     animationController = AnimationController(
       vsync: vsync,
       duration: const Duration(
@@ -90,15 +92,17 @@ class QiuzScreenController {
     animationController.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
         nextQuestion();
-        print('next done');
-      } 
-      
+      }
     });
   }
 
   void makeCounterTimerNow() {
     forwardAnimation();
     inputDataStreamTime.add((animationProgressPercent * 5).toInt());
+  }
+
+  void goToAnswerScreen() {
+    Navigator.of(_context).pushReplacementNamed(RoutesName.kAnswerScreen);
   }
 
   void nextQuestion() {
@@ -110,8 +114,8 @@ class QiuzScreenController {
     groupValueIndex = -1;
     inputDataGroupValue.add(groupValueIndex);
     if (questionNow >= countQuestion - 1) {
-      animationStatus = false;
-      inputPutAnimationProgress.add(animationProgressPercent);
+      // inputPutAnimationProgress.add(animationProgressPercent);
+      goToAnswerScreen();
     } else {
       questionNow++;
       makeCounterTimerNow();
@@ -143,7 +147,13 @@ class QiuzScreenController {
     inputDataGroupValue.close();
     streamControllerButtonStatus.close();
     inputDataButtonStatus.close();
-    inputDataStreamTime.close();
     streamControllertime.close();
+    inputDataStreamTime.close();
+    streamControllerAnimationProgress.close();
+    inputPutAnimationProgress.close();
+    streamControllertNextQuestion.close();
+    inputDataStreamNextQuestion.close();
+
+    animationController.dispose();
   }
 }

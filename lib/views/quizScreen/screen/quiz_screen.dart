@@ -25,7 +25,7 @@ class _QuizScreenState extends State<QuizScreen>
   @override
   void initState() {
     super.initState();
-    _qiuzScreenController = QiuzScreenController(this);
+    _qiuzScreenController = QiuzScreenController(this, context);
     _qiuzScreenController.forwardAnimation();
     _qiuzScreenController.restartAnimation();
   }
