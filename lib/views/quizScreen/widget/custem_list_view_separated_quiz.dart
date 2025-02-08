@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:quiz/core/resources/const_value.dart';
 
 import '../../../controller/quiz/qiuz_screen_controller.dart';
 import 'custem_item_radio_quiz_screen.dart';
@@ -21,6 +20,7 @@ class CustemListViewSeparatedQuiz extends StatelessWidget {
             stream: _qiuzScreenController.outputDataGroupValue,
             builder: (context, snapshot) {
               return CustemItemRadioQuiaScreen(
+                index: index,
                 onTap: () {
                   _qiuzScreenController.onTapAtItemRadio(index);
                 },
@@ -29,9 +29,8 @@ class CustemListViewSeparatedQuiz extends StatelessWidget {
                     : snapshot.data == index
                         ? true
                         : false,
-                text: ConstValue.questionList[_qiuzScreenController.questionNow]
-                    .listOfAnswer[index]
-                    .toString(),
+              outputDataStreamNextQuestion: _qiuzScreenController.outPutStreamNextQuestion 
+                    ,
               );
             }),
         separatorBuilder: (context, index) => const SizedBox(
